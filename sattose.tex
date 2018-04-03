@@ -29,21 +29,63 @@ Recently, the concept of Computational Thinking (CT) has appeared as a process t
 
 Visual programming languages are very useful tools for learners to improve their programming and CT skills, Scratch1 and App Inventor2 are examples of this. There have also emerged tools that analyze the CT skills from the projects of these languages, for example Dr. Scratch3 and Code Master4.
 
-\section{App Inventor Analysis}
+\section{Methodology}
 
-For the analysis, they have been used more than 1000 projects obtained from the Gallery on the App Inventor website. These projects go through a program that extracts the different blocks used. Once we have the blocks, it is verified that the projects are not empty or duplicated. Once the valid projects are discarded, the rest is analyzed as follows:
+For the analysis, more than 1000 projects obtained from the Gallery of App Inventor web have been used. In this Gallery you can find tens of thousands of projects uploaded by users. The age, gender, nationality or level of programming of the users are unknown.
 
-\subsection{Second Level Heading}
+\subsection{Before starting...}
 
-Second level headings must be flush left, initial caps, bold and in point
-size 10. One line space before the second level heading and $1/2$ line
-space after the second level heading.
+Using a script the different blocks used by each project are extracted and classified, this information is saved in a csv file. Once we have all projects prepared, we must discard empty (0 blocks) or duplicate projects.
 
-\subsubsection{Third Level Heading}
+* COMPARATIVE TABLE: NUMBER DESCRIBE() ORIGINAL, 0 BLOCKS, DUPLICATES *
 
-Third level headings must be flush left, initial caps and bold.
-One line space before the third level heading and $1/2$ line
-space after the third level heading.
+Next, the "used blocks" are studied, that is, each type of block adds one for each project in which it has been used. The "repeated blocks" are also studied: we add the number of each type of blocks used in each project. We can see that the correlation of both is 0.84, which means that they are highly related.
+
+\subsection{Study of the most and least used block.}
+
+Counting the most and least used blocks for all projects we obtain:
+
+* RESULTS *
+
+While for projects with a variety less than 10:
+
+* RESULTS *
+
+
+\subsection{Study of the scores depending on the variety.}
+
+The distribution of the variety of blocks (number of different blocks used) for each project can be seen in the following figure:
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[height=5cm]{fig1}
+\caption{Variety distribution }
+\label{fig1}
+\end{center}
+\end{figure}
+
+Projects with more than 10 blocks represent 48.2\% (352 of 730) of the blocks and the scores can be characterized as seen in the following table versus the scores of the projects with less than 10 blocks:
+
+\begin{table}[ht]
+\begin{center}
+\caption{Comparative table of scores between small and large projects}
+
+\bigskip
+
+\begin{tabular}{|l|l|r|}
+\hline
+& Large projects & Small projects \\ \hline
+Frequency & 352 & 378\\ \hline
+Percentage & 48.2 & 51.8\\ \hline
+Mean & 18.56 & 9.89\\ \hline
+Std. Deviation & 5.33 & 3.27\\ \hline
+Minimum & 7 & 3\\ \hline
+Maximum & 36 & 19\\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
 
 \paragraph{Fourth Level Heading}
 
@@ -79,14 +121,6 @@ splitting the figure and figure caption.
 
 Figure \ref{fig1} shows how to include a figure as encapsulated postscript.
 The source of the figure is in file {\tt fig1.eps}.
-
-\begin{figure}[ht]
-\begin{center}
-\includegraphics[height=4cm]{fig1}
-\caption{Sample EPS figure }
-\label{fig1}
-\end{center}
-\end{figure}
 
 Below is another figure using LaTeX commands.
 
