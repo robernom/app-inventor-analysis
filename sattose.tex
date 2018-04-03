@@ -1,0 +1,170 @@
+\documentclass[a4paper]{article}
+\usepackage{graphicx}
+\usepackage{twocolpceurws}
+
+
+\title{An analysis of App Inventor projects}
+
+\author{
+Roberto Nombela \\ Universidad Rey Juan Carlos\\
+                Madrid, Spain \\ r.nombelaa@alumnos.urjc.es
+}
+
+\institution{}
+
+
+
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Visual programming languages help learners improve their programming and computational skills. App Inventor is a visual programming langauage block-based to create Android applications. In this paper we analyze App Inventor projects...
+\end{abstract}
+
+
+\section{Background}
+
+Recently, the concept of Computational Thinking (CT) has appeared as a process to solve problems, not necessarily in computers. CT includes skils such as: problem abstraction, algorithmic thinking, data representation...
+
+Visual programming languages are very useful tools for learners to improve their programming and CT skills, Scratch1 and App Inventor2 are examples of this. There have also emerged tools that analyze the CT skills from the projects of these languages, for example Dr. Scratch3 and Code Master4.
+
+\section{App Inventor Analysis}
+
+For the analysis, they have been used more than 1000 projects obtained from the Gallery on the App Inventor website. These projects go through a program that extracts the different blocks used. Once we have the blocks, it is verified that the projects are not empty or duplicated. Once the valid projects are discarded, the rest is analyzed as follows:
+
+\subsection{Second Level Heading}
+
+Second level headings must be flush left, initial caps, bold and in point
+size 10. One line space before the second level heading and $1/2$ line
+space after the second level heading.
+
+\subsubsection{Third Level Heading}
+
+Third level headings must be flush left, initial caps and bold.
+One line space before the third level heading and $1/2$ line
+space after the third level heading.
+
+\paragraph{Fourth Level Heading}
+
+Fourth level headings must be flush left, initial caps and roman type.
+One line space before the fourth level heading and $1/2$ line
+space after the fourth level heading.
+
+\subsection{Citations In Text}
+
+Citations within the text should indicate the author's last name and
+year\cite{Knuth-vol3}. Reference style\cite{Comer-btree}
+should follow the style that you are used to using, as long as the
+citation style is consistent.
+
+\subsubsection{Footnotes}
+
+Indicate footnotes with a number\footnote{This is a sample footnote} in
+the text. Place the footnotes at the bottom of the page they appear on.
+Precede the footnote with a vertical rule of 2 inches (12 picas).
+
+\subsubsection{Figures}
+
+All artwork must be centered, neat, clean and legible. Do not use pencil
+or hand-drawn artwork. Figure number and caption always appear after the
+the figure. Place one line space before the figure, one line space
+before the figure caption and one line space after the figure caption.
+The figure caption is initial caps and each figure is numbered
+consecutively.
+
+Make sure that the figure caption does not get separated from the
+figure. Leave extra white space at the bottom of the page to avoid
+splitting the figure and figure caption.
+
+Figure \ref{fig1} shows how to include a figure as encapsulated postscript.
+The source of the figure is in file {\tt fig1.eps}.
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[height=4cm]{fig1}
+\caption{Sample EPS figure }
+\label{fig1}
+\end{center}
+\end{figure}
+
+Below is another figure using LaTeX commands.
+
+
+\begin{figure}[ht]
+\begin{center}
+\setlength{\unitlength}{1pt}
+\footnotesize
+\begin{picture}(160,80)
+        \put(0,0){\framebox(160,80)[]{}}
+        \put(10,35){\framebox(80,40){}}
+        \put(100,20){\framebox(40,20){}}
+        \put(70,10){\framebox(20,10){}}
+        \put(20,5){\framebox(10,5){}}
+\end{picture}
+\caption{Sample Figure Caption}
+\end{center}
+\end{figure}
+
+\subsubsection{Tables}
+
+All tables must be centered, neat, clean and legible. Do not use pencil
+or hand-drawn tables. Table number and title always appear before the
+table.
+
+One line space before the table title, one line space after the table
+title and one line space after the table. The table title must be
+initial caps and each table numbered consecutively.
+
+\begin{table}[ht]
+\begin{center}
+\caption{Sample Table}
+
+\bigskip
+
+\begin{tabular}{|l|l|r|}
+\hline
+A & B & 1\\ \hline
+C & D & 2\\
+E & F & 3\\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+\subsubsection{Handling References}
+
+Use a first level heading for the references. References follow the
+acknowledgements.
+
+
+\subsubsection{Acknowledgements}
+
+Use a third level heading for the acknowledgements. All acknowledgements
+go at the end of the paper.
+
+
+
+
+%\bibliographystyle{alpha} 
+%\bibliography{samplebib}
+%inline the .bbl file directly for mailing to authors.
+
+\begin{thebibliography}{Com79}
+
+\bibitem[Com79]{Comer-btree}
+D.~Comer.
+\newblock The ubiquitous b-tree.
+\newblock {\em Computing Surveys}, 11(2):121--137, June 1979.
+
+\bibitem[Knu73]{Knuth-vol3}
+D.~E. Knuth.
+\newblock {\em The Art of Computer Programming -- Volume 3 / Sorting and
+  Searching}.
+\newblock Addison-Wesley, 1973.
+
+\end{thebibliography}
+
+\end{document}
+
+
