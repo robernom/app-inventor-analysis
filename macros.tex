@@ -1,0 +1,31 @@
+\ifdraft
+  \newcommand{\grex}[1]{{\color{red}\emph{Gregorio says: #1}}\xspace}
+    \newcommand{\rnombela}[1]{{\color{blue}\emph{Roberto says: #1}}\xspace}
+  \newcommand{\cn}{\textcolor{pink}{[citation needed]}}
+\else
+  \usepackage[disable]{todonotes}
+  \newcommand{\grex}[1]{}
+  \newcommand{\rnombela}[1]{}
+  \newcommand{\fixme}[1]{}
+  \newcommand{\cn}{}
+\fi
+
+\let\labelindent\relax
+\usepackage[inline]{enumitem}
+
+\newcommand{\RQ}[1]{\emph{RQ\textsubscript{#1}}}
+\newcommand{\HP}[1]{\emph{H\textsubscript{#1}}}
+%\newlist{rquestion}{enumerate}{2}
+%\setlist[rquestion,1]{label=\RQ{\arabic*.}, itemsep=0cm, topsep=0.1cm, leftmargin=3.4em}
+%\setlist[rquestion,2]{label*=\emph{\textsubscript{\arabic*.}}, itemsep=0cm, topsep=0cm, leftmargin=2.6em}
+
+\newcommand{\tbd}{\emph{To be done.}}
+
+\newenvironment{hassanbox}%
+{\begin{center}\vspace{1mm}\noindent\begin{Sbox}\begin{minipage}{0.95\columnwidth}}%
+{\end{minipage}\end{Sbox}\fbox{\TheSbox}\end{center}\vspace{1mm}}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "fairness"
+%%% End:
