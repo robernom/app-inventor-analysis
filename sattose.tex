@@ -9,6 +9,7 @@
 \usepackage{xspace}
 \usepackage{color}
 \usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{hyperref}
 
 \input{macros}
 
@@ -62,15 +63,15 @@ This paper is structured as follows: the Methodology section talks about the acq
 
 \subsection{Data Gathering}
 
-The process of data gathering consists of downloading projects from the App Inventor Gallery. In addition to the most popular projects, the most recent ones have also been downloaded, since many projects are being uploaded every day. One problem with this is that you can find many empty (0 blocks) or duplicate projects. Another problem is the difficulty to automate the download process because you have to make a copy of the Gallery projects to your account projects and then download them.
-
-\rnombela{Do I upload the projects to the repo in a zip and share the link?} 
-\grex{Yes, and provide a link to the file as a footnote}
+The process of data gathering consists of downloading projects from the App Inventor Gallery. In addition to the most popular projects, the most recent ones have also been downloaded, since many projects are being uploaded every day. One problem with this is that you can find many empty (0 blocks) or duplicate projects. Another problem is the difficulty to automate the download process because you have to make a copy of the Gallery projects to your account projects and then download them. All compressed projects can be found on GitHub\footnote{\url{https://www.github.com/robernom/app-inventor-analysis}}.
+\rnombela{I can't upload the zip to the repo because it's too large}
 
 Every project has two different types of files per screen, bky and scm. In bky files we can see, in XML format, all the blocks used. While scm files use JSON structure and represent all the components used. Thus, to extract the blocks we run a script that creates a dictionary where the key is the type and the value is the number of blocks of that type, looks at the next block and if it is a new type it is included to the dictionary with value one, otherwise it is added one to the value. Using this script for each project we have all the blocks extracted and classified, so this information is saved in a CSV file. Once we have all projects prepared, we must discard empty or duplicate projects.
 
-\rnombela{Do you mean the rubric of Dr. App Inventor?}
-\grex{yes!}
+In order to assess the projects, we use our own tool called Dr. App Inventor, a tool based on Dr. Scratch with the 
+rubric\footnote{\url{http://apps.computacaonaescola.ufsc.br:8080/rubrica_appinventor.jsp}} of Code Master.
+
+\rnombela{Is this ok? Should I add something else?}
 
 \begin{table}[ht]
 \begin{center}
@@ -94,7 +95,53 @@ Next, the ``used blocks'' are studied, that is, each type of block adds one for 
 
 \section{Results}
 
-Counting the most and least used blocks for all projects we obtain the results shown in Table~\ref{tab:most-least}. \grex{Elaborate on the results!}
+In the App Inventor documentation web page\footnote{\url{http://appinventor.mit.edu/explore/ai2/support/blocks.html}} there are 8 families of blocks: control, logic, math, text, list, color, variable and procedures. Table~\ref{tab:block-fam} shows the different families and what each one can include. In addition to these 8 families there is one more: Components. This family is composed of all the elements that can be used in App Inventor to create applications. Each component can have methods, events and properties.
+
+\begin{table}[ht]
+\begin{center}
+\caption{Blocks families and properties}
+\bigskip
+\label{tab:block-fam}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Control} & Conditionals, loops... \\ \hline
+\textbf{Logic} & True, false, and, or... \\ \hline
+\textbf{Math} & Numbers, operations\\ \hline
+\textbf{Text} & String functions\\ \hline
+\textbf{List} & List functions\\ \hline
+\textbf{Color} & Color box, make or split color \\ \hline
+\textbf{Variable} & Initialize/Set/Get variable\\ \hline
+\textbf{Procedure} & Do/Result\\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+We add all the blocks according to their family in order to check which family is the most used. Component is the most used while Color is the least, this is logical because an application needs more a button or a media player, for example, than any color.
+
+\begin{table}[ht]
+\begin{center}
+\caption{Comparison of the use of the families}
+\bigskip
+\label{tab:block-fam-comp}
+\begin{tabular}{|l|r|}
+\hline
+\textbf{Family} & \textbf{Frequency} \\ \hline
+Component & 49,507 \\ \hline
+Text	& 25,426\\ \hline
+Math & 24,862\\ \hline
+Variables & 21,765\\ \hline
+Logic & 12,792\\ \hline
+Control & 8,915\\ \hline
+Lists & 4,381\\ \hline
+Procedure & 4,282\\ \hline
+Colors & 2,452\\ \hline
+Total & 154,382\\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Now, we want to do the same process but for all the blocks regardless of the family. Doing this, we obtain the results shown in Table~\ref{tab:most-least}. \grex{Elaborate on the results!}
+\rnombela{I still have to expand this}
 
 \begin{table}[ht]
 \begin{center}
@@ -118,7 +165,8 @@ controls\_closeScreenWithPlainText & 1\\ \hline
 \end{center}
 \end{table}
 
-While for projects with a variety less than 10, results can be seen in Table~\ref{tab:most-least-small}. \grex{Elaborate on the results!}
+Finally, we want to represent the most and least used blocks for projects with a variety less than 10, results can be seen in Table~\ref{tab:most-least-small}. \grex{Elaborate on the results!}
+\rnombela{I still have to expand this}
 
 \begin{table}[ht]
 \begin{center}
@@ -146,13 +194,14 @@ math\_convert\_number & 0\\ \hline
 
 \subsection{Study of the scores depending on the variety}
 
-The distribution of the variety of blocks (number of different blocks used) for each project can be seen in the following figure:
+The distribution of the variety of blocks (number of different blocks used) for each project can be seen in Figure~\ref{fig:var-dist}. We can see that the predominant values of the variety are between 3 and 6, in addition there are some projects around 50 and an isolated project with 61 different blocks.
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[height=4cm]{fig1}
+\includegraphics[height=5cm]{fig1}
 \caption{Variety distribution \grex{elaborate}}
-\label{fig1}
+\rnombela{Add something else?}
+\label{fig:var-dist}
 \end{center}
 \end{figure}
 
@@ -177,6 +226,7 @@ Maximum & 36 & 19\\ \hline
 \end{center}
 \end{table}
 
+\rnombela{I have to include more results}
 
 \subsubsection{Acknowledgements}
 
