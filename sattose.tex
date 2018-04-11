@@ -60,21 +60,38 @@ This paper is structured as follows: the Methodology section talks about the acq
 
 \section{MIT App Inventor}
 
-\grex{It would be nice to have an introduction to MIT App Inventor. One paragraph + citations}
+MIT App Inventor is a visual programming language block-based to create Android applications. Users can build their apps by dragging and dropping the components. There are two modes, \emph{Designer} and \emph{Blocks}. In Designer mode, the User Interface is created with elements such as Buttons, Images, Canvas... In Blocks mode, users specify the behavior of the app by joining blocks like completing a puzzle (Book: App Inventor, D. Wolber et al., 2011).
 
-\grex{It would be nice to see a screenshot where one could see blocks from AppInventor. An image + one paragraph}
+\begin{figure}
+\begin{center}
+\includegraphics[height=5cm]{blocks-example}
+\caption{Blocks mode screenshot}
+\label{fig:blocks-example}
+\end{center}
+\end{figure}
 
-\grex{It would be nice to see the final product of an AppInventor project (a screenshot of an app). An image + one paragraph explaining it}
+In Figure~\ref{fig:blocks-example}, we have the App Inventor Blocks mode screen for a Pong game application. Each family of blocks is identified with a different color. This app uses all the classes, except Colors and Lists. Control blocks handle events, like when a button is clicked. Logic blocks, true and false, enable or disable the ball. Math blocks set the position of the ball. Text blocks set the text ``Game Over" in a label. Variables blocks set the score. Procedures blocks are called to make sounds or move the ball.
+
+\begin{figure}
+\begin{center}
+\includegraphics[height=5cm]{app-screen}
+\caption{App screenshot}
+\label{fig:app-example}
+\end{center}
+\end{figure}
+
+Figure~\ref{fig:app-example} shows a screenshot of the Pong game in the built-in app. Some of the previously mentioned components can be seen: the ball, one image as the paddle, the ``Game Over" label because the ball is on the floor, two buttons to start and to reset and one check box.
 
 \section{Methodology}
 
 \subsection{Data Gathering}
 
-The process of data gathering consists of downloading projects from the App Inventor Gallery. In addition to the most popular projects, the most recent ones have also been downloaded, since many projects are being uploaded every day. One problem with this is that you can find many empty (0 blocks) or duplicate projects. Another problem is the difficulty to automate the download process because you have to make a copy of the Gallery projects to your account projects and then download them. All compressed projects can be found on GitHub\footnote{\url{https://www.github.com/robernom/app-inventor-analysis}}.
-\rnombela{I can't upload the zip to the repo because it's too large}
-\grex{If you put them somewhere, I can upload them to the gysc server.}
+The process of data gathering consists of downloading projects from the App Inventor Gallery. In addition to the most popular projects, the most recent ones have also been downloaded, since many projects are being uploaded every day. One problem with this is that you can find many empty (0 blocks) or duplicate projects. Another problem is the difficulty to automate the download process because you have to make a copy of the Gallery projects to your account projects and then download them. All compressed projects can be found on GitHub\footnote{\url{https://github.com/robernom/app-inventor-analysis/blob/master/AI_projects.zip}}.
+\rnombela{Finally, I was able to upload it to GitHub}
 
-Every project has two different types of files per screen, \emph{bky} and \emph{scm}. The bky files contain, in XML format, all the blocks used. On the other hand, scm files use a JSON structure and represent all the components used. Thus, to extract the blocks we run a script that creates a dictionary where the key is the type and the value is the number of blocks of that type, looks at the next block and if it is a new type it is included to the dictionary with value one, otherwise it is added one to the value. Using this script for each project we have all the blocks extracted and classified, so this information is saved in a CSV file. Once we have all projects prepared, we must discard empty or duplicate projects.
+Every project has two different types of files per screen, \emph{bky} and \emph{scm}. The bky files contain, in XML format, all the blocks used. On the other hand, scm files use a JSON structure and represent all the components used. Thus, to extract the blocks we run a script that creates a dictionary where the key is the type and the value is the number of blocks of that type, looks at the next block and if it is a new type it is included to the dictionary with value one, otherwise it is added one to the value. Using this script for each project we have all the blocks extracted and classified, so this information is saved in a CSV file. Once we have all projects prepared, we must discard empty or duplicate projects. 
+
+Table~\ref{tab:blocks} shows how the discarding of invalid projects affects the number of blocks. Initially, we had 1222 projects that became 1102 when we remove empty projects and, in the end, we had 730 projects by eliminating duplicate projects. While, unlike the number of projects, the mean and the standard deviation increase their values. Logically, when empty projects are removed, the minimum becomes 1.
 
 In order to assess the projects, we use our own tool called Dr. App Inventor, a tool based on Dr. Scratch with the 
 rubric\footnote{\url{http://apps.computacaonaescola.ufsc.br:8080/rubrica_appinventor.jsp}} of Code Master.
@@ -88,7 +105,7 @@ rubric\footnote{\url{http://apps.computacaonaescola.ufsc.br:8080/rubrica_appinve
 \begin{tabular}{|l|r|r|r|}
 \hline
 & Original & No empty & No duplicate \\ \hline
-Frequency & 1,222 & 1,102 & 730\\ \hline
+Projects & 1,222 & 1,102 & 730\\ \hline
 Mean & 187.89 & 208.35 & 211.48\\ \hline
 Std. Dev & 463.68 & 483.9 & 502.62 \\ \hline
 Minimum & 0 & 1 & 1\\ \hline
@@ -96,8 +113,6 @@ Maximum & 5,476 & 5,476 & 5,476 \\ \hline
 \end{tabular}
 \end{center}
 \end{table}
-
-\grex{The results in Table~\ref{tab:blocks} should be presented in the text}
 
 Next, the ``used blocks'' are studied, that is, each type of block adds one for each project in which it has been used. The ``repeated blocks'' are also studied: we add the number of each type of blocks used in each project. We can see that the correlation of both is 0.84, which means that they are highly related.
 
@@ -201,7 +216,7 @@ math\_convert\_number & 0\\ \hline
 
 \subsection{Study of the scores depending on the variety}
 
-The distribution of the variety of blocks (number of different blocks used) for each project can be seen in Figure~\ref{fig:var-dist}. We can see that the predominant values of the variety are between 3 and 6, in addition there are some projects around 50 and an isolated project with 61 different blocks.
+The distribution of the variety of blocks for each project can be seen in Figure~\ref{fig:var-dist}. The x axis represents the variety, that is, the number of different blocks used and the y axis represents the frequency or the times a variety is given. We can see that the predominant values of the variety are between 3 and 6, in addition there are some projects around 50 and an isolated project with 61 different blocks. 
 
 \begin{figure}
 \begin{center}
