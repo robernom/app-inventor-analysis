@@ -62,6 +62,27 @@ This paper is structured as follows: the Methodology section talks about the acq
 
 MIT App Inventor is a visual programming language block-based to create Android applications. Users can build their apps by dragging and dropping the components. There are two modes, \emph{Designer} and \emph{Blocks}. In Designer mode, the User Interface is created with elements such as Buttons, Images, Canvas... In Blocks mode, users specify the behavior of the app by joining blocks like completing a puzzle (Book: App Inventor, D. Wolber et al., 2011).
 
+In the App Inventor documentation web page\footnote{\url{http://appinventor.mit.edu/explore/ai2/support/blocks.html}} there are 8 families of blocks: control, logic, math, text, list, color, variable and procedures. Table~\ref{tab:block-fam} shows the different families and what each one can include. In addition to these 8 families there is one more: Components. This family is composed of all the elements that can be used in App Inventor to create applications. Each component can have methods, events and properties.
+
+\begin{table}
+\begin{center}
+\caption{Blocks families and properties}
+\bigskip
+\label{tab:block-fam}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Control} & Conditionals, loops... \\ \hline
+\textbf{Logic} & True, false, and, or... \\ \hline
+\textbf{Math} & Numbers, operations\\ \hline
+\textbf{Text} & String functions\\ \hline
+\textbf{List} & List functions\\ \hline
+\textbf{Color} & Color box, make or split color \\ \hline
+\textbf{Variable} & Initialize/Set/Get variable\\ \hline
+\textbf{Procedure} & Do/Result\\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
 \begin{figure}
 \begin{center}
 \includegraphics[height=5cm]{blocks-example}
@@ -87,15 +108,16 @@ Figure~\ref{fig:app-example} shows a screenshot of the Pong game in the built-in
 \subsection{Data Gathering}
 
 The process of data gathering consists of downloading projects from the App Inventor Gallery. In addition to the most popular projects, the most recent ones have also been downloaded, since many projects are being uploaded every day. One problem with this is that you can find many empty (0 blocks) or duplicate projects. Another problem is the difficulty to automate the download process because you have to make a copy of the Gallery projects to your account projects and then download them. All compressed projects can be found on GitHub\footnote{\url{https://github.com/robernom/app-inventor-analysis/blob/master/AI_projects.zip}}.
-\rnombela{Finally, I was able to upload it to GitHub}
 
-Every project has two different types of files per screen, \emph{bky} and \emph{scm}. The bky files contain, in XML format, all the blocks used. On the other hand, scm files use a JSON structure and represent all the components used. Thus, to extract the blocks we run a script that creates a dictionary where the key is the type and the value is the number of blocks of that type, looks at the next block and if it is a new type it is included to the dictionary with value one, otherwise it is added one to the value. Using this script for each project we have all the blocks extracted and classified, so this information is saved in a CSV file. Once we have all projects prepared, we must discard empty or duplicate projects. 
+Every project has two different types of files per screen, \emph{bky} and \emph{scm}. The bky files contain, in XML format, all the blocks used. On the other hand, scm files use a JSON structure and represent all the components used. Thus, to extract the blocks we run a script that creates a dictionary where the key is the type and the value is the number of blocks of that type, looks at the next block and if it is a new type it is included to the dictionary with value one, otherwise it is added one to the value. Using this script for each project we have all the blocks extracted and classified, so this information is saved in a csv file. Once we have all projects prepared, we must discard empty or duplicate projects. 
 
-Table~\ref{tab:blocks} shows how the discarding of invalid projects affects the number of blocks. Initially, we had 1222 projects that became 1102 when we remove empty projects and, in the end, we had 730 projects by eliminating duplicate projects. While, unlike the number of projects, the mean and the standard deviation increase their values. Logically, when empty projects are removed, the minimum becomes 1.
+Table~\ref{tab:blocks} shows how the discarding of invalid projects affects the number of blocks. Initially, we had 1222 projects that became 1102 when we remove empty projects and, in the end, we had 730 projects by eliminating duplicate projects. While, unlike the number of projects, the mean, the median and the standard deviation increase their values. Logically, when empty projects are removed, the minimum becomes 1.
 
+\subsection{Data analyzing}
 In order to assess the projects, we use our own tool called Dr. App Inventor, a tool based on Dr. Scratch with the 
 rubric\footnote{\url{http://apps.computacaonaescola.ufsc.br:8080/rubrica_appinventor.jsp}} of Code Master.
 \grex{If there is space, we could have the rubrique as an appendix to the paper. If so, we  should cite the Brazilians}
+\rnombela{To do: Dr. App Inventor explanation}
 
 \begin{table}
 \begin{center}
@@ -108,6 +130,7 @@ rubric\footnote{\url{http://apps.computacaonaescola.ufsc.br:8080/rubrica_appinve
 Projects & 1,222 & 1,102 & 730\\ \hline
 Mean & 187.89 & 208.35 & 211.48\\ \hline
 Std. Dev & 463.68 & 483.9 & 502.62 \\ \hline
+Median & 47 & 55 & 60\\ \hline
 Minimum & 0 & 1 & 1\\ \hline
 Maximum & 5,476 & 5,476 & 5,476 \\ \hline
 \end{tabular}
@@ -115,31 +138,12 @@ Maximum & 5,476 & 5,476 & 5,476 \\ \hline
 \end{table}
 
 Next, the ``used blocks'' are studied, that is, each type of block adds one for each project in which it has been used. The ``repeated blocks'' are also studied: we add the number of each type of blocks used in each project. We can see that the correlation of both is 0.84, which means that they are highly related.
+\rnombela{I'm not sure if this paragraph contributes anything}
 
 \section{Results}
+\subsection{Study of the blocks usage}
 
-In the App Inventor documentation web page\footnote{\url{http://appinventor.mit.edu/explore/ai2/support/blocks.html}} there are 8 families of blocks: control, logic, math, text, list, color, variable and procedures. Table~\ref{tab:block-fam} shows the different families and what each one can include. In addition to these 8 families there is one more: Components. This family is composed of all the elements that can be used in App Inventor to create applications. Each component can have methods, events and properties.
-
-\begin{table}
-\begin{center}
-\caption{Blocks families and properties}
-\bigskip
-\label{tab:block-fam}
-\begin{tabular}{|l|l|}
-\hline
-\textbf{Control} & Conditionals, loops... \\ \hline
-\textbf{Logic} & True, false, and, or... \\ \hline
-\textbf{Math} & Numbers, operations\\ \hline
-\textbf{Text} & String functions\\ \hline
-\textbf{List} & List functions\\ \hline
-\textbf{Color} & Color box, make or split color \\ \hline
-\textbf{Variable} & Initialize/Set/Get variable\\ \hline
-\textbf{Procedure} & Do/Result\\ \hline
-\end{tabular}
-\end{center}
-\end{table}
-
-We add all the blocks according to their family in order to check which family is the most used. Component is the most used while Color is the least, this is logical because an application needs more a button or a media player, for example, than any color.
+Table~\ref{tab:block-fam-comp} gives a count of all the blocks according to their family to sort families according to their usage. Component is the most used while Color is the least, this is logical because an application needs more a button or a media player, for example, than any color.
 
 \begin{table}
 \begin{center}
@@ -163,8 +167,7 @@ Total & 154,382\\ \hline
 \end{center}
 \end{table}
 
-Now, we want to do the same process but for all the blocks regardless of the family. Doing this, we obtain the results shown in Table~\ref{tab:most-least}. \grex{Elaborate on the results!}
-\rnombela{I still have to expand this}
+Now, we want to do the same process but for all the blocks regardless of the family. In this way, we obtain the most used blocks for all projects. Doing this, we obtain the results shown in Table~\ref{tab:most-least}.
 
 \begin{table}
 \begin{center}
@@ -188,14 +191,18 @@ controls\_closeScreenWithPlainText & 1\\ \hline
 \end{center}
 \end{table}
 
-Finally, we want to represent the most and least used blocks for projects with a variety less than 10, results can be seen in Table~\ref{tab:most-least-small}. \grex{Elaborate on the results!}
-\rnombela{I still have to expand this}
+The most used block is \emph{component\_set\_get}, whose function is to introduce or obtain the properties of a component. The following is \emph{text}, which is used to create strings. \emph{Math\_number} can take the value of any positive or negative number (decimals included). \emph{Lexical\_variable\_get} provides the value of any variable. \emph{Component\_event} takes the value of any event that belongs to the component.
+These blocks represent a large percentage of their families. Components: 77.82\%; Text: 89.06\%; Math: 61.57\%; Variable: 67.37\%.
+
+Between the least used blocks we can find \emph{list\_to\_csv\_table} which converts a list in a csv, \emph{math\_tan} returns the tangent of the given number in degrees, \emph{obfuscated\_text} provides security if there is confidential information in the app, \emph{text\_is\_string} returns true if the parameter is a string and \emph{controls\_closeScreenWithPlainText} closes the current screen and passes text to the app that opened this one. These blocks are less used because they are very specific for the common applications.
+
+In order to know which are the most and least used blocks in low diversity projects, in Table~\ref{tab:most-least-low} we calculate them for projects with a variety less than 10.
 
 \begin{table}[ht]
 \begin{center}
-\caption{Most and less used blocks for small projects}
+\caption{Most and less used blocks for low diversity projects}
 \bigskip
-\label{tab:most-least-small}
+\label{tab:most-least-low}
 \begin{tabular}{|l|r|}
 \hline
 component\_set\_get & 5,562\\ \hline
@@ -213,6 +220,13 @@ math\_convert\_number & 0\\ \hline
 \end{center}
 \end{table}
 
+The two first blocks are the same that we obtained for all the projects. \emph{Component\_event} is the third while before it was the fifth. Now, we have \emph{component\_method} that refers to any method that can be used by the component and \emph{controls\_openAnotherScreen} which opens the screen with the provided name.
+
+By knowing which are the most and least used blocks or families of blocks, educators will be able to give more emphasis to ones than others. Furthermore, if there are some that are underutilized, they can explain these with more attention.
+
+For example, Control and Procedure families are essential tools for CT since they participate in algorithmic thinking and procedural abstraction but they only represent 5.77\% and 2.77\% of the total, respectively. This can be a possible learning path for educators to spend more time on these types of blocks.
+
+\rnombela{To do: Statistics for blocks}
 
 \subsection{Study of the scores depending on the variety}
 
@@ -221,38 +235,56 @@ The distribution of the variety of blocks for each project can be seen in Figure
 \begin{figure}
 \begin{center}
 \includegraphics[height=5cm]{fig1}
-\caption{Variety distribution \grex{elaborate}\rnombela{Add something else?}\grex{Explain the axes}}
+\caption{Distribution of the variety}
 \label{fig:var-dist}
 \end{center}
 \end{figure}
 
-Projects with more than 10 blocks represent 48.2\% (352 of 730) of the blocks and the scores can be characterized as seen in Table~\ref{tab:comparison} versus the scores of the projects with less than 10 blocks. \grex{Elaborate!}
+Projects with more than 10 blocks represent 48.2\% (352 of 730) of the blocks and the scores can be characterized as seen in Table~\ref{tab:comparison} versus the scores of the projects with less than 10 blocks. Projects with high almost double in all respects to those with low diversity. This means that the more variety, the higher the score.
 
 \begin{table}
 \begin{center}
-\caption{Comparative table of scores between small and large projects}
+\caption{Scores in low and high diversity projects}
 
 \bigskip
 \label{tab:comparison}
 
 \begin{tabular}{|l|r|r|}
 \hline
-& Large projects & Small projects \\ \hline
-Frequency & 352 & 378\\ \hline
+& High diversity & Low diversity \\ \hline
+Projects & 352 & 378\\ \hline
 Percentage & 48.2 & 51.8\\ \hline
 Mean & 18.56 & 9.89\\ \hline
 Std. Deviation & 5.33 & 3.27\\ \hline
+Median & 18 & 10\\ \hline
 Minimum & 7 & 3\\ \hline
 Maximum & 36 & 19\\ \hline
 \end{tabular}
 \end{center}
 \end{table}
 
-\rnombela{I have to include more results}
+The results of the projects according to the variety allow us to get an idea of the need to use different blocks before a large number of blocks. For example, Table~\ref{tab:comp-num-var} shows the comparison of the project with the largest number of blocks versus the most varied. Again, we can see that the variety is directly related to the score.
+
+\begin{table}
+\begin{center}
+\caption{Comparison of the number of blocks against the variety.}
+
+\bigskip
+\label{tab:comp-num-var}
+
+\begin{tabular}{|r|r|r|}
+\hline
+Number & Variety & Score \\ \hline
+5476 & 16 & 18\\ \hline
+4115 & 61 & 36\\ \hline
+\end{tabular}
+\end{center}
+\end{table}
 
 \section{Future work}
 
 \grex{It would be nice to say what future work could be. One or two paragraphs}
+\rnombela{To do}
 
 \section*{Acknowledgements}
 
