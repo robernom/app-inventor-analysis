@@ -40,7 +40,6 @@ Our aim in the long run is to create tools that support the learning process of 
 
 
 \section{Introduction}
-
 In recent years, the concept of Computational Thinking (CT) has been presented as a process to solve problems, not necessarily only in programming~\cite{wing2006computational}. 
 CT includes skills that facilitate the resolution of problems, such as: abstraction, algorithmic and parallel thinking, data representation. These abilities make the CT a fundamental help for any learner.
 
@@ -56,10 +55,9 @@ This study aims to find a way to help learners improve by analyzing the blocks o
 For the analysis, more than 1000 projects obtained from the Gallery of App Inventor web have been used. 
 In this Gallery you can find tens of thousands of projects uploaded by users. The age, gender, nationality or level of programming of the users are unknown.
 
-This paper is structured as follows: the Methodology section talks about the acquisition and preparation of the data for the analysis and the Results section shows what has been obtained using the cleaned data. Finally in the Conclusions section we interpret the results.
+This paper is structured as follows: the first section is an introduction to MIT App Inventor. Then, the Methodology section talks about the acquisition and preparation of the data for the analysis and the Results section shows and explains what has been obtained using the cleaned data. Finally, the Future work section mentions possible improvements to the CT assistance tools.
 
 \section{MIT App Inventor}
-
 MIT App Inventor is a visual programming language block-based to create Android applications. Users can build their apps by dragging and dropping the components. There are two modes, \emph{Designer} and \emph{Blocks}. In Designer mode, the User Interface is created with elements such as Buttons, Images, Canvas... In Blocks mode, users specify the behavior of the app by joining blocks like completing a puzzle (Book: App Inventor, D. Wolber et al., 2011).
 
 In the App Inventor documentation web page\footnote{\url{http://appinventor.mit.edu/explore/ai2/support/blocks.html}} there are 8 families of blocks: control, logic, math, text, list, color, variable and procedures. Table~\ref{tab:block-fam} shows the different families and what each one can include. In addition to these 8 families there is one more: Components. This family is composed of all the elements that can be used in App Inventor to create applications. Each component can have methods, events and properties.
@@ -104,9 +102,7 @@ In Figure~\ref{fig:blocks-example}, we have the App Inventor Blocks mode screen 
 Figure~\ref{fig:app-example} shows a screenshot of the Pong game in the built-in app. Some of the previously mentioned components can be seen: the ball, one image as the paddle, the ``Game Over" label because the ball is on the floor, two buttons to start and to reset and one check box.
 
 \section{Methodology}
-
 \subsection{Data Gathering}
-
 The process of data gathering consists of downloading projects from the App Inventor Gallery. In addition to the most popular projects, the most recent ones have also been downloaded, since many projects are being uploaded every day. One problem with this is that you can find many empty (0 blocks) or duplicate projects. Another problem is the difficulty to automate the download process because you have to make a copy of the Gallery projects to your account projects and then download them. All compressed projects can be found on GitHub\footnote{\url{https://github.com/robernom/app-inventor-analysis/blob/master/AI_projects.zip}}.
 
 Every project has two different types of files per screen, \emph{bky} and \emph{scm}. The bky files contain, in XML format, all the blocks used. On the other hand, scm files use a JSON structure and represent all the components used. Thus, to extract the blocks we run a script that creates a dictionary where the key is the type and the value is the number of blocks of that type, looks at the next block and if it is a new type it is included to the dictionary with value one, otherwise it is added one to the value. Using this script for each project we have all the blocks extracted and classified, so this information is saved in a csv file. Once we have all projects prepared, we must discard empty or duplicate projects. 
@@ -142,7 +138,6 @@ Next, the ``used blocks'' are studied, that is, each type of block adds one for 
 
 \section{Results}
 \subsection{Study of the blocks usage}
-
 Table~\ref{tab:block-fam-comp} gives a count of all the blocks according to their family to sort families according to their usage. Component is the most used while Color is the least, this is logical because an application needs more a button or a media player, for example, than any color.
 
 \begin{table}
@@ -167,7 +162,27 @@ Total & 154,382\\ \hline
 \end{center}
 \end{table}
 
-Now, we want to do the same process but for all the blocks regardless of the family. In this way, we obtain the most used blocks for all projects. Doing this, we obtain the results shown in Table~\ref{tab:most-least}.
+\begin{table}[ht]
+\begin{center}
+\caption{Number of blocks statistics}
+\bigskip
+\label{tab:number-blocks}
+\begin{tabular}{|l|r|}
+\hline
+Types & 107\\ \hline
+Mean & 1,442.82\\ \hline
+Std. Dev & 4,232.51\\ \hline
+Median & 133\\ \hline
+Minimum & 1\\ \hline
+Maximum & 28,927\\ \hline
+Total & 154,382\\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Looking at all the blocks now, Table~\ref{tab:number-blocks} shows the statistics of the times that the blocks are used in the 730 valid projects. The mean is 1,442.82 and there is a big standard deviation. The median is 133, that is, of the 107 types of blocks at least 50\% of them are used 133 times.
+
+Table~\ref{tab:most-least} shows the most used blocks independently of their family.
 
 \begin{table}
 \begin{center}
@@ -224,13 +239,12 @@ The two first blocks are the same that we obtained for all the projects. \emph{C
 
 By knowing which are the most and least used blocks or families of blocks, educators will be able to give more emphasis to ones than others. Furthermore, if there are some that are underutilized, they can explain these with more attention.
 
-For example, Control and Procedure families are essential tools for CT since they participate in algorithmic thinking and procedural abstraction but they only represent 5.77\% and 2.77\% of the total, respectively. This can be a possible learning path for educators to spend more time on these types of blocks.
-
-\rnombela{To do: Statistics for blocks}
+For example, Control and Procedure families are essential tools for CT since they participate in algorithmic thinking and procedural abstraction but they only represent 5.77\% and 2.77\% of the total, respectively. This may be a potential learning gap and students should consider these types of blocks further.
 
 \subsection{Study of the scores depending on the variety}
 
-The distribution of the variety of blocks for each project can be seen in Figure~\ref{fig:var-dist}. The x axis represents the variety, that is, the number of different blocks used and the y axis represents the frequency or the times a variety is given. We can see that the predominant values of the variety are between 3 and 6, in addition there are some projects around 50 and an isolated project with 61 different blocks. 
+The variety of a project is the number of different types of blocks used. This study aims to confirm what intuition suggests: the more variety a project has, the higher the score. 
+Figure~\ref{fig:var-dist} presents the distribution of the variety. The x axis represents the variety of each project and the y axis represents the frequency or the times a variety is given. The figure reveals that most projects have a relatively low variety. We can see that the predominant values of the variety are between 3 and 6, in addition there are some projects around 50 and an isolated project with 61 different blocks. 
 
 \begin{figure}
 \begin{center}
@@ -240,15 +254,13 @@ The distribution of the variety of blocks for each project can be seen in Figure
 \end{center}
 \end{figure}
 
-Projects with more than 10 blocks represent 48.2\% (352 of 730) of the blocks and the scores can be characterized as seen in Table~\ref{tab:comparison} versus the scores of the projects with less than 10 blocks. Projects with high almost double in all respects to those with low diversity. This means that the more variety, the higher the score.
+Projects with more than 10 different blocks represent 48.2\% (352 of 730) of the blocks and the scores can be characterized as seen in Table~\ref{tab:comparison} versus the scores of the projects with less than 10 different blocks. Projects with high diversity almost double in all respects to those with low diversity. This means that the initial hypothesis is true.
 
 \begin{table}
 \begin{center}
 \caption{Scores in low and high diversity projects}
-
 \bigskip
 \label{tab:comparison}
-
 \begin{tabular}{|l|r|r|}
 \hline
 & High diversity & Low diversity \\ \hline
@@ -263,15 +275,13 @@ Maximum & 36 & 19\\ \hline
 \end{center}
 \end{table}
 
-The results of the projects according to the variety allow us to get an idea of the need to use different blocks before a large number of blocks. For example, Table~\ref{tab:comp-num-var} shows the comparison of the project with the largest number of blocks versus the most varied. Again, we can see that the variety is directly related to the score.
+The results of the projects according to the variety allow us to get an idea of the need to use different blocks before a large number of blocks. For example, Table~\ref{tab:comp-num-var} shows the comparison of the project with the largest number of blocks versus the most varied. Once again, we can see the straight relationship between variety and score.
 
 \begin{table}
 \begin{center}
-\caption{Comparison of the number of blocks against the variety.}
-
+\caption{Comparison of quantity versus variety}
 \bigskip
 \label{tab:comp-num-var}
-
 \begin{tabular}{|r|r|r|}
 \hline
 Number & Variety & Score \\ \hline
@@ -282,12 +292,11 @@ Number & Variety & Score \\ \hline
 \end{table}
 
 \section{Future work}
+Following the possible enhancements proposed by \cite{robles2018ontools}, the next step is to get projects for learners to see examples and practice with them. These projects should include Control or Procedure blocks, a high variety or the combination of both. 
 
-\grex{It would be nice to say what future work could be. One or two paragraphs}
-\rnombela{To do}
+Another step is to provide personalized feedback based on each student's progress and needs. For this purpose, the projects of the learner could be analysed in a similar way to the analysis carried out in this study.
 
 \section*{Acknowledgements}
-
 This research has been supported in part 
 by the Region of Madrid under project ``eMadrid:
 Investigación y Desarrollo de tecnologías educativas en la
