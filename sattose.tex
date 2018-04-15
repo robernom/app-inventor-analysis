@@ -110,10 +110,13 @@ Every project has two different types of files per screen, \emph{bky} and \emph{
 Table~\ref{tab:blocks} shows how the discarding of invalid projects affects the number of blocks. Initially, we had 1222 projects that became 1102 when we remove empty projects and, in the end, we had 730 projects by eliminating duplicate projects. While, unlike the number of projects, the mean, the median and the standard deviation increase their values. Logically, when empty projects are removed, the minimum becomes 1.
 
 \subsection{Data analyzing}
-In order to assess the projects, we use our own tool called Dr. App Inventor, a tool based on Dr. Scratch with the 
-rubric\footnote{\url{http://apps.computacaonaescola.ufsc.br:8080/rubrica_appinventor.jsp}} of Code Master.
+In order to assess the CT of the projects, we use our own tool called Dr. App Inventor. This tool is an analogy of Dr. Scratch to analyze App Inventor projects while using the Code Master rubric\footnote{\url{http://apps.computacaonaescola.ufsc.br:8080/rubrica_appinventor.jsp}}, written in Python.
+
+The algorithm of the tool receives the file with the project and decompresses it. Inside the file there are 3 directories: \emph{assets} contains the media files; \emph{youngandroidproject} has the project properties like the project name or the app name; and \emph{src}, which includes the bky and scm files, mentioned previously.
+
+In the bky, the tool extracts the blocks and then classifies them according to the type, while in the scm it collects all the components. Once Dr. App Inventor has identified the blocks and components, it applies the rubric and returns the score for each criterion along with the total score.
+
 \grex{If there is space, we could have the rubrique as an appendix to the paper. If so, we  should cite the Brazilians}
-\rnombela{To do: Dr. App Inventor explanation}
 
 \begin{table}
 \begin{center}
@@ -244,7 +247,7 @@ For example, Control and Procedure families are essential tools for CT since the
 \subsection{Study of the scores depending on the variety}
 
 The variety of a project is the number of different types of blocks used. This study aims to confirm what intuition suggests: the more variety a project has, the higher the score. 
-Figure~\ref{fig:var-dist} presents the distribution of the variety. The x axis represents the variety of each project and the y axis represents the frequency or the times a variety is given. The figure reveals that most projects have a relatively low variety. We can see that the predominant values of the variety are between 3 and 6, in addition there are some projects around 50 and an isolated project with 61 different blocks. 
+Figure~\ref{fig:var-dist} presents the distribution of the variety. The x axis represents the variety of each project and the y axis represents the frequency or the times a variety is given. The figure reveals that most projects have a relatively low variety. We can see that the predominant values are between 3 and 6, in addition there are some projects around 50 and an isolated project with 61 different blocks. 
 
 \begin{figure}
 \begin{center}
