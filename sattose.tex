@@ -40,27 +40,24 @@ Our aim in the long run is to create tools that support the learning process of 
 
 
 \section{Introduction}
-In recent years, the concept of Computational Thinking (CT) has been presented as a process to solve problems, not necessarily only in programming~\cite{wing2006computational}. 
+In recent years, the concept of Computational Thinking (CT) has been presented as a process for solving problems, not necessarily only in programming~\cite{wing2006computational}. 
 CT includes skills that facilitate the resolution of problems, such as: abstraction, algorithmic and parallel thinking, data representation. These abilities make the CT a fundamental help for any learner.
 
-One way to acquire and improve the skills of CT and programming level are visual programming languages.
-This is because programming involves activities such as the ability to design, create and invent new media~\cite{resnick2009scratch}.
-The Scratch and App Inventor visual programming languages are examples of this.
+One way to acquire and improve the skills of CT and programming level is through visual programming languages. This is because programming involves activities such as the ability to design, create and invent new media~\cite{resnick2009scratch}. The visual programming languages Scratch and App Inventor are examples of this.
 
-Because of this, tools that assess the CT skills from the projects of these programming languages have also emerge, for example Dr. Scratch~\cite{moreno2015dr} and Code Master that analyze the Scratch and App Inventor (and Snap!) projects respectively. 
-At current time, these assessments have turned out to be more useful for educators than for learners by the fact that the latter do not receive enough feedback to improve~\cite{robles2018ontools}.
+Because of this, tools that assess the CT skills of the projects in these programming languages have also emerge, for example Dr. Scratch~\cite{moreno2015dr} and Code Master that analyze the Scratch and App Inventor (and Snap!) projects respectively. 
+At current time, these assessments have turned out to be more useful for educators than for learners, as the latter do not receive enough feedback to improve~\cite{robles2018ontools}.
 
-This study aims to find a way to help learners improve by analyzing the blocks of App Inventor projects. Observing values as number or variety of blocks we will have an overview of the type of projects that the App Inventor community are creating.
+This study aims to find a way to help learners improve by analyzing the blocks of App Inventor projects. Looking at values as number or variety of blocks we will have an overview of the type of projects that the App Inventor community is creating.
 
-For the analysis, more than 1000 projects obtained from the Gallery of App Inventor web have been used. 
-In this Gallery you can find tens of thousands of projects uploaded by users. The age, gender, nationality or level of programming of the users are unknown.
+The analysis has used over 1000 projects from the Gallery of App Inventor website. In this Gallery there are tens of thousands of projects uploaded by users. Personal information, such as age, gender, nationality or level of programming of users, is unknown.
 
-This paper is structured as follows: the first section is an introduction to MIT App Inventor. Then, the Methodology section talks about the acquisition and preparation of the data for the analysis and the Results section shows and explains what has been obtained using the cleaned data. Finally, the Future work section mentions possible improvements to the CT assistance tools.
+This paper is structured as follows: the first section is an introduction to MIT App Inventor. Then, the Methodology section discusses the acquisition and preparation of the data for the analysis and the Results section shows and explains what has been obtained using the cleaned data. Finally, the Future work section mentions possible improvements to the CT assistance tools.
 
 \section{MIT App Inventor}
-MIT App Inventor is a visual programming language block-based to create Android applications. Users can build their apps by dragging and dropping the components. There are two modes, \emph{Designer} and \emph{Blocks}. In Designer mode, the User Interface is created with elements such as Buttons, Images, Canvas... In Blocks mode, users specify the behavior of the app by joining blocks like completing a puzzle~\cite{wolber2011app}.
+MIT App Inventor is a block-based visual programming language to create Android applications. Users can build their apps by dragging and dropping the components. There are two modes, \emph{Designer} and \emph{Blocks}. In Designer mode, the User Interface is created with elements such as Buttons, Images, Canvas... In Blocks mode, users specify the behaviour of the app by joining blocks together as if they were completing a puzzle~\cite{wolber2011app}.
 
-In the App Inventor documentation web page\footnote{\url{http://appinventor.mit.edu/explore/ai2/support/blocks.html}} there are 8 families of blocks: control, logic, math, text, list, color, variable and procedures. Table~\ref{tab:block-fam} shows the different families and what each one can include. In addition to these 8 families there is one more: Components. This family is composed of all the elements that can be used in App Inventor to create applications. Each component can have methods, events and properties.
+On the App Inventor documentation web page\footnote{\url{http://appinventor.mit.edu/explore/ai2/support/blocks.html}} there are 8 families of blocks: control, logic, math, text, list, color, variable and procedures. Table~\ref{tab:block-fam} shows the different families and what each one can include. In addition to these 8 families there is one more: Components. This family is composed of all the elements that can be used in App Inventor to create applications. Each component can have methods, events and properties.
 
 \begin{table}
 \begin{center}
@@ -99,20 +96,20 @@ In Figure~\ref{fig:blocks-example}, we have the App Inventor Blocks mode screen 
 \end{center}
 \end{figure}
 
-Figure~\ref{fig:app-example} shows a screenshot of the Pong game in the built-in app. Some of the previously mentioned components can be seen: the ball, one image as the paddle, the ``Game Over" label because the ball is on the floor, two buttons to start and to reset and one check box.
+Figure~\ref{fig:app-example} shows a screenshot of the Pong game in the compiled app. The image has some of the components previously mentioned: the ball, an image like the paddle, the ``Game Over" label because the ball is on the bottom, Start and Restart buttons and a check box.
 
 \section{Methodology}
 \subsection{Data Gathering}
-The process of data gathering consists of downloading projects from the App Inventor Gallery. In addition to the most popular projects, the most recent ones have also been downloaded, since many projects are being uploaded every day. One problem with this is that you can find many empty (0 blocks) or duplicate projects. Another problem is the difficulty to automate the download process because you have to make a copy of the Gallery projects to your account projects and then download them. All compressed projects can be found on GitHub\footnote{\url{https://github.com/robernom/app-inventor-analysis/blob/master/AI_projects.zip}}.
+The process of data gathering consists of downloading projects from the App Inventor Gallery. In addition to the most popular projects, the projects collected include the most recent ones, since many projects are being uploaded every day. One problem with this is that the Gallery may have many empty (0 blocks) or duplicate projects. Another problem is the difficulty to automate the download process because users have to make a copy of the Gallery projects in their account and then download them. All compressed projects can be found on GitHub\footnote{\url{https://github.com/robernom/app-inventor-analysis/blob/master/AI_projects.zip}}.
 
-Every project has two different types of files per screen, \emph{bky} and \emph{scm}. The bky files contain, in XML format, all the blocks used. On the other hand, scm files use a JSON structure and represent all the components used. Thus, to extract the blocks we run a script that creates a dictionary where the key is the type and the value is the number of blocks of that type, looks at the next block and if it is a new type it is included to the dictionary with value one, otherwise it is added one to the value. Using this script for each project we have all the blocks extracted and classified, so this information is saved in a CSV file. Once we have all projects prepared, we must discard empty or duplicate projects. 
+Each project has two different file types per screen, \emph{bky} and \emph{scm}. The bky files contain, in XML format, all the blocks used. On the other hand, scm files use a JSON structure and represent all the components used. Thus, to extract the blocks we execute a script that creates a dictionary where the key is the type and the value is the number of blocks of that type, looks at the next block and if it is a new type it is included to the dictionary with value one, otherwise the value increases one. Using this script for each project we have all the blocks extracted and classified, so this information is saved in a CSV file. Once we have all the projects ready, we must discard empty or duplicate projects. 
 
-Table~\ref{tab:blocks} shows how the discarding of invalid projects affects the number of blocks. Initially, we had 1222 projects that became 1102 when we remove empty projects and, in the end, we had 730 projects by eliminating duplicate projects. While, unlike the number of projects, the mean, the median and the standard deviation increase their values. Logically, when empty projects are removed, the minimum becomes 1.
+Table~\ref{tab:blocks} shows how discarding invalid projects affects the number of blocks. Initially, there were 1222 projects that became 1102 by removing empty projects and, in the end, there are 730 projects eliminating duplicate projects. Unlike the number of projects, the mean, the median and the standard deviation increase their values. Logically, when empty projects are removed, the minimum becomes 1.
 
 \subsection{Data analyzing}
 In order to assess the CT of the projects, we use our own tool called Dr. App Inventor. This tool is an analogy of Dr. Scratch to analyze App Inventor projects while using the Code Master rubric\footnote{\url{http://apps.computacaonaescola.ufsc.br:8080/rubrica_appinventor.jsp}}, written in Python.
 
-The algorithm of the tool receives the file with the project and decompresses it. Inside the file there are 3 directories: \emph{assets} contains the media files; \emph{youngandroidproject} has the project properties like the project name or the app name; and \emph{src}, which includes the bky and scm files, mentioned previously.
+The algorithm of the tool receives the file with the project and decompresses it. Inside the file there are 3 directories: \emph{assets} contains the multimedia files; \emph{youngandroidproject} has the project properties like the project name or the app name; and \emph{src}, which includes the bky and scm files, mentioned above.
 
 In the bky, the tool extracts the blocks and then classifies them according to the type, while in the scm it collects all the components. Once Dr. App Inventor has identified the blocks and components, it applies the rubric and returns the score for each criterion along with the total score.
 
@@ -134,11 +131,11 @@ Maximum & 5,476 & 5,476 & 5,476 \\ \hline
 \end{center}
 \end{table}
 
-Next, the ``used blocks'' are studied, that is, each type of block adds one for each project in which it has been used. The ``repeated blocks'' are also studied: we add the number of each type of blocks used in each project. We can see that the correlation of both is 0.84, which means that they are highly related.
+Next, the study calculates the ``used blocks'', that is, each type of block adds one for each project in which it has been used. It also calculates the ``repeated blocks'': each block type adds up the times it is used for each project. The correlation of both is 0.84, which means that they are highly related.
 
 \section{Results}
 \subsection{Study of the blocks usage}
-Table~\ref{tab:block-fam-comp} gives a count of all the blocks according to their family to sort families according to their usage. Component is the most used while Color is the least, this is logical because an application needs more a button or a media player, for example, than any color.
+Table~\ref{tab:block-fam-comp} gives a count of all the blocks by family to rank families according to their usage. Component is the most used while Color is the least, this is logical because an application needs more of a button or a media player, for example, than any color.
 
 \begin{table}
 \begin{center}
@@ -180,7 +177,7 @@ Total & 154,382\\ \hline
 \end{center}
 \end{table}
 
-Looking at all the blocks now, Table~\ref{tab:number-blocks} shows the statistics of the times that the blocks are used in the 730 valid projects. The mean is 1,442.82 and there is a big standard deviation. The median is 133, that is, of the 107 types of blocks at least 50\% of them are used 133 times.
+Looking at all the blocks now, Table~\ref{tab:number-blocks} shows the statistics of the times that the blocks are used in the 730 valid projects. The mean is 1,442.82 and there is a large standard deviation. The median is 133, that is, of the 107 types of blocks at least 50\% of them are used 133 times.
 
 Table~\ref{tab:most-least} shows the most used blocks independently of their family.
 
@@ -211,7 +208,7 @@ These blocks represent a large percentage of their families. Components: 77.82\%
 
 Between the least used blocks we can find \emph{list\_to\_csv\_table} which converts a list in a CSV, \emph{math\_tan} returns the tangent of the given number in degrees, \emph{obfuscated\_text} provides security if there is confidential information in the app, \emph{text\_is\_string} returns true if the parameter is a string and \emph{controls\_closeScreenWithPlainText} closes the current screen and passes text to the app that opened this one. These blocks are less used because they are very specific for the common applications.
 
-In order to know which are the most and least used blocks in low diversity projects, in Table~\ref{tab:most-least-low} we calculate them for projects with a variety less than 10.
+In order to know which are the most and least used blocks in low diversity projects, in Table~\ref{tab:most-least-low} shows the calculation them for projects with a variety less than 10.
 
 \begin{table}[ht]
 \begin{center}
@@ -235,16 +232,15 @@ math\_convert\_number & 0\\ \hline
 \end{center}
 \end{table}
 
-The two first blocks are the same that we obtained for all the projects. \emph{Component\_event} is the third while before it was the fifth. Now, we have \emph{component\_method} that refers to any method that can be used by the component and \emph{controls\_openAnotherScreen} which opens the screen with the provided name.
+The two first blocks are the same as for all the projects. \emph{Component\_event} is the third whereas before it was the fifth. Now, it is \emph{component\_method} which refers to any method that can be used by the component. The last is \emph{controls\_openAnotherScreen} which opens the screen with the provided name.
 
 By knowing which are the most and least used blocks or families of blocks, educators will be able to give more emphasis to ones than others. Furthermore, if there are some that are underutilized, they can explain these with more attention.
 
-For example, Control and Procedure families are essential tools for CT since they participate in algorithmic thinking and procedural abstraction but they only represent 5.77\% and 2.77\% of the total, respectively. This may be a potential learning gap and students should consider these types of blocks further.
+For example, Control and Procedure families are essential tools for CT since they participate in algorithmic thinking and procedural abstraction but they only represent 5.77\% and 2.77\% of the total, respectively. This may be a potential learning gap and students should learn these types of blocks further.
 
 \subsection{Study of the scores depending on the variety}
-
 The variety of a project is the number of different types of blocks used. This study aims to confirm what intuition suggests: the more variety a project has, the higher the score. 
-Figure~\ref{fig:var-dist} presents the distribution of the variety. The x axis represents the variety of each project and the y axis represents the frequency or the times a variety is given. The figure reveals that most projects have a relatively low variety. We can see that the predominant values are between 3 and 6, in addition there are some projects around 50 and an isolated project with 61 different blocks. 
+Figure~\ref{fig:var-dist} presents the distribution of the variety. The x-axis represents the variety of each project and the y-axis represents the frequency or the times a variety occurs. The figure reveals that the majority of projects have a relatively low variety. The predominant variety values are between 3 and 6, in addition there are some projects around 50 and an isolated project with 61 different blocks. 
 
 \begin{figure}
 \begin{center}
@@ -254,7 +250,7 @@ Figure~\ref{fig:var-dist} presents the distribution of the variety. The x axis r
 \end{center}
 \end{figure}
 
-Projects with more than 10 different blocks represent 48.2\% (352 of 730) of the blocks and the scores can be characterized as seen in Table~\ref{tab:comparison} versus the scores of the projects with less than 10 different blocks. Projects with high diversity almost double in all respects to those with low diversity. This means that the initial hypothesis is true.
+Projects with more than 10 different blocks represent 48.2\% (352 out of 730) of the blocks and their scores have the characteristics of the Table~\ref{tab:comparison} compared to the scores of projects with less than 10 different blocks. Projects with high diversity almost duplicate all the values of projects with low diversity. This means that the initial hypothesis is true.
 
 \begin{table}
 \begin{center}
@@ -275,7 +271,7 @@ Maximum & 36 & 19\\ \hline
 \end{center}
 \end{table}
 
-The results of the projects according to the variety allow us to get an idea of the need to use different blocks before a large number of blocks. For example, Table~\ref{tab:comp-num-var} shows the comparison of the project with the largest number of blocks versus the most varied. Once again, we can see the straight relationship between variety and score.
+The results of the projects according to the variety allow us to get an idea of the need to use different blocks before a large number of blocks. For example, Table~\ref{tab:comp-num-var} shows the comparison of the project with the largest number of blocks versus the most varied. Once again, we can see the direct relationship between variety and score.
 
 \begin{table}
 \begin{center}
@@ -294,7 +290,7 @@ Number & Variety & Score \\ \hline
 \section{Future work}
 Following the possible enhancements proposed in~\cite{robles2018ontools}, the next step is to get projects for learners to see examples and practice with them. These projects should include Control or Procedure blocks, a high variety or the combination of both. 
 
-Another step is to provide personalized feedback based on each student's progress and needs. For this purpose, the projects of the learner could be analysed in a similar way to the analysis carried out in this study.
+Another step is to provide personalized feedback based on the progress and needs of each student. For this purpose, the projects of the learner could be analysed in a similar way to the analysis carried out in this study.
 
 \section*{Acknowledgements}
 This research has been supported in part 
