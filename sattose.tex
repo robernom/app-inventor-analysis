@@ -13,7 +13,7 @@
 
 \input{macros}
 
-\title{A Preliminary Quantitative Analysis of App Inventor projects}
+\title{A Preliminary Quantitative Analysis of App Inventor Projects}
 
 \author{
 Roberto Nombela \\ Universidad Rey Juan Carlos\\
@@ -58,7 +58,7 @@ In this Gallery you can find tens of thousands of projects uploaded by users. Th
 This paper is structured as follows: the first section is an introduction to MIT App Inventor. Then, the Methodology section talks about the acquisition and preparation of the data for the analysis and the Results section shows and explains what has been obtained using the cleaned data. Finally, the Future work section mentions possible improvements to the CT assistance tools.
 
 \section{MIT App Inventor}
-MIT App Inventor is a visual programming language block-based to create Android applications. Users can build their apps by dragging and dropping the components. There are two modes, \emph{Designer} and \emph{Blocks}. In Designer mode, the User Interface is created with elements such as Buttons, Images, Canvas... In Blocks mode, users specify the behavior of the app by joining blocks like completing a puzzle (Book: App Inventor, D. Wolber et al., 2011).
+MIT App Inventor is a visual programming language block-based to create Android applications. Users can build their apps by dragging and dropping the components. There are two modes, \emph{Designer} and \emph{Blocks}. In Designer mode, the User Interface is created with elements such as Buttons, Images, Canvas... In Blocks mode, users specify the behavior of the app by joining blocks like completing a puzzle~\cite{wolber2011app}.
 
 In the App Inventor documentation web page\footnote{\url{http://appinventor.mit.edu/explore/ai2/support/blocks.html}} there are 8 families of blocks: control, logic, math, text, list, color, variable and procedures. Table~\ref{tab:block-fam} shows the different families and what each one can include. In addition to these 8 families there is one more: Components. This family is composed of all the elements that can be used in App Inventor to create applications. Each component can have methods, events and properties.
 
@@ -84,7 +84,7 @@ In the App Inventor documentation web page\footnote{\url{http://appinventor.mit.
 \begin{figure}
 \begin{center}
 \includegraphics[height=5cm]{blocks-example}
-\caption{Blocks mode screenshot}
+\caption{Blocks mode screenshot.}
 \label{fig:blocks-example}
 \end{center}
 \end{figure}
@@ -94,7 +94,7 @@ In Figure~\ref{fig:blocks-example}, we have the App Inventor Blocks mode screen 
 \begin{figure}
 \begin{center}
 \includegraphics[height=5cm]{app-screen}
-\caption{App screenshot}
+\caption{App screenshot of a Pong game.}
 \label{fig:app-example}
 \end{center}
 \end{figure}
@@ -105,7 +105,7 @@ Figure~\ref{fig:app-example} shows a screenshot of the Pong game in the built-in
 \subsection{Data Gathering}
 The process of data gathering consists of downloading projects from the App Inventor Gallery. In addition to the most popular projects, the most recent ones have also been downloaded, since many projects are being uploaded every day. One problem with this is that you can find many empty (0 blocks) or duplicate projects. Another problem is the difficulty to automate the download process because you have to make a copy of the Gallery projects to your account projects and then download them. All compressed projects can be found on GitHub\footnote{\url{https://github.com/robernom/app-inventor-analysis/blob/master/AI_projects.zip}}.
 
-Every project has two different types of files per screen, \emph{bky} and \emph{scm}. The bky files contain, in XML format, all the blocks used. On the other hand, scm files use a JSON structure and represent all the components used. Thus, to extract the blocks we run a script that creates a dictionary where the key is the type and the value is the number of blocks of that type, looks at the next block and if it is a new type it is included to the dictionary with value one, otherwise it is added one to the value. Using this script for each project we have all the blocks extracted and classified, so this information is saved in a csv file. Once we have all projects prepared, we must discard empty or duplicate projects. 
+Every project has two different types of files per screen, \emph{bky} and \emph{scm}. The bky files contain, in XML format, all the blocks used. On the other hand, scm files use a JSON structure and represent all the components used. Thus, to extract the blocks we run a script that creates a dictionary where the key is the type and the value is the number of blocks of that type, looks at the next block and if it is a new type it is included to the dictionary with value one, otherwise it is added one to the value. Using this script for each project we have all the blocks extracted and classified, so this information is saved in a CSV file. Once we have all projects prepared, we must discard empty or duplicate projects. 
 
 Table~\ref{tab:blocks} shows how the discarding of invalid projects affects the number of blocks. Initially, we had 1222 projects that became 1102 when we remove empty projects and, in the end, we had 730 projects by eliminating duplicate projects. While, unlike the number of projects, the mean, the median and the standard deviation increase their values. Logically, when empty projects are removed, the minimum becomes 1.
 
@@ -116,8 +116,6 @@ The algorithm of the tool receives the file with the project and decompresses it
 
 In the bky, the tool extracts the blocks and then classifies them according to the type, while in the scm it collects all the components. Once Dr. App Inventor has identified the blocks and components, it applies the rubric and returns the score for each criterion along with the total score.
 
-\grex{If there is space, we could have the rubrique as an appendix to the paper. If so, we  should cite the Brazilians}
-
 \begin{table}
 \begin{center}
 \caption{Comparative table of the number of blocks}
@@ -125,7 +123,7 @@ In the bky, the tool extracts the blocks and then classifies them according to t
 \label{tab:blocks}
 \begin{tabular}{|l|r|r|r|}
 \hline
-& Original & No empty & No duplicate \\ \hline
+& Original & Non-empty & No duplicate \\ \hline
 Projects & 1,222 & 1,102 & 730\\ \hline
 Mean & 187.89 & 208.35 & 211.48\\ \hline
 Std. Dev & 463.68 & 483.9 & 502.62 \\ \hline
@@ -137,7 +135,6 @@ Maximum & 5,476 & 5,476 & 5,476 \\ \hline
 \end{table}
 
 Next, the ``used blocks'' are studied, that is, each type of block adds one for each project in which it has been used. The ``repeated blocks'' are also studied: we add the number of each type of blocks used in each project. We can see that the correlation of both is 0.84, which means that they are highly related.
-\rnombela{I'm not sure if this paragraph contributes anything}
 
 \section{Results}
 \subsection{Study of the blocks usage}
@@ -212,7 +209,7 @@ controls\_closeScreenWithPlainText & 1\\ \hline
 The most used block is \emph{component\_set\_get}, whose function is to introduce or obtain the properties of a component. The following is \emph{text}, which is used to create strings. \emph{Math\_number} can take the value of any positive or negative number (decimals included). \emph{Lexical\_variable\_get} provides the value of any variable. \emph{Component\_event} takes the value of any event that belongs to the component.
 These blocks represent a large percentage of their families. Components: 77.82\%; Text: 89.06\%; Math: 61.57\%; Variable: 67.37\%.
 
-Between the least used blocks we can find \emph{list\_to\_csv\_table} which converts a list in a csv, \emph{math\_tan} returns the tangent of the given number in degrees, \emph{obfuscated\_text} provides security if there is confidential information in the app, \emph{text\_is\_string} returns true if the parameter is a string and \emph{controls\_closeScreenWithPlainText} closes the current screen and passes text to the app that opened this one. These blocks are less used because they are very specific for the common applications.
+Between the least used blocks we can find \emph{list\_to\_csv\_table} which converts a list in a CSV, \emph{math\_tan} returns the tangent of the given number in degrees, \emph{obfuscated\_text} provides security if there is confidential information in the app, \emph{text\_is\_string} returns true if the parameter is a string and \emph{controls\_closeScreenWithPlainText} closes the current screen and passes text to the app that opened this one. These blocks are less used because they are very specific for the common applications.
 
 In order to know which are the most and least used blocks in low diversity projects, in Table~\ref{tab:most-least-low} we calculate them for projects with a variety less than 10.
 
@@ -295,14 +292,14 @@ Number & Variety & Score \\ \hline
 \end{table}
 
 \section{Future work}
-Following the possible enhancements proposed by \cite{robles2018ontools}, the next step is to get projects for learners to see examples and practice with them. These projects should include Control or Procedure blocks, a high variety or the combination of both. 
+Following the possible enhancements proposed in~\cite{robles2018ontools}, the next step is to get projects for learners to see examples and practice with them. These projects should include Control or Procedure blocks, a high variety or the combination of both. 
 
 Another step is to provide personalized feedback based on each student's progress and needs. For this purpose, the projects of the learner could be analysed in a similar way to the analysis carried out in this study.
 
 \section*{Acknowledgements}
 This research has been supported in part 
 by the Region of Madrid under project ``eMadrid:
-Investigación y Desarrollo de tecnologías educativas en la
+Investigaci\'on y Desarrollo de tecnolog\'ias educativas en la
 Comunidad de Madrid'' (S2013/ICE-2715).
 
 
